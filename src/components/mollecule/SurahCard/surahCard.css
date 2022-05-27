@@ -1,0 +1,13 @@
+.nomor {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  background-color: #ebebeb;
+}
+
+.nomor p {
+  transform: rotate(-45deg);
+}
