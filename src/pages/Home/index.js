@@ -5,15 +5,12 @@ import SurahCard from "../../components/mollecule/SurahCard";
 
 function App() {
   const [allSurah, setAllSurah] = useState(null);
+  const [isFailToFetch, setIsFailToFetch] = useState(false)
 
   useEffect(() => {
     axios.get('https://equran.id/api/surat')
-      .then(res => {
-        setAllSurah(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      .then(res => setAllSurah(res.data))
+      .catch(() => setIsFailToFetch(true))
   }, [])
 
   function showAllSurah() {
@@ -23,13 +20,15 @@ function App() {
           <SurahCard key={surah.nomor} surah={surah} />
         )
       })
-    } else {
-      return (
-        <div>
-          kosong
-        </div>
-      )
     }
+  }
+
+  if (isFailToFetch) {
+    return (
+      <>
+        <p className="text-center text-red-700 my-32">Maaf, gagal memuat Al-Quran.</p>
+      </>
+    )
   }
 
   return (

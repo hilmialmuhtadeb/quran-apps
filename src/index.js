@@ -9,8 +9,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <div className="App px-4 md:px-12 lg:px-24 xl:px-32">
-      <Navigation />
       <BrowserRouter>
+        <Navigation />
         <AppRoute />
       </BrowserRouter>
     </div>
